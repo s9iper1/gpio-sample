@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	// Use mcu pin 10, corresponds to physical pin 19 on the pi
+	// Use mcu pin 10, corresponds to physical pin 21 on the pi
 	pin = rpio.Pin(21)
 )
 
@@ -19,10 +19,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Unmap gpio memory when done
+	// for my own understand defer is for executing the item after all functions have been excuted. so we call close
+	// when code is exucuted
 	defer rpio.Close()
 
-	// Set pin to output mode
+	// Set pin to output mode as it will be a out call
 	pin.Output()
 
 	// Toggle pin 20 times
